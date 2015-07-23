@@ -1,0 +1,49 @@
+<ion-view view-title="Add">
+<ion-content>
+<div class="list card" >
+  <div class="item item-divider">
+      <h2>New Transaction</h2>
+  </div>
+  <div class="row item">
+      <div class="col col-50">
+        <label>Date<input type="text" placeholder="yyyy/mm/dd" value="{{transaction.date}}" ng-model="transaction.date"></label>
+      </div>
+      <div class="col col-50">
+        <label>Payee<input type="text" value="Hello" ng-model="transaction.payee"></label>
+      </div>
+  </div>
+  <div class="row item">
+      <div class="col ">
+        <label>Account<input type="text" placeholder="expenses:something" value="{{transaction}}" ng-model="transaction.accounts.a1.name"></label>
+      </div>
+      <div class="col col-20">
+        <label>Currency<input type="text" placeholder="£" value="{{transaction}}" ng-model="transaction.accounts.a1.currency"></label>
+      </div>
+      <div class="col col-30">
+        <label>Target Amount<input type="number" placeholder="4.99" value="{{transaction}}" ng-model="transaction.accounts.a1.amount"></label>
+      </div>
+  </div>
+  <div class="item">
+    <label>Source Account<input type="text" placeholder="assets:bank" value="{{transaction}}" ng-model="transaction.accounts.a2.name"></label>
+  </div>
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item balanced-bg" ng-click="update()">
+        <i class="icon ion-android-create"></i>
+        Save
+    </a>
+  </div>
+</div>
+<div class="list card">
+  <div class="item item-divider">
+      <p>{{transaction.date}}</p>
+      <h2>{{transaction.payee}}</h2>
+  </div>
+  <div class="item" ng-repeat="account in transaction.accounts" ng-if="account.amount != null">
+  <h2>{{account.name}} <span class="item-note"><span>{{account.currency}}</span>{{account.amount}}</span></h2>
+  </div>
+  <div class="item item-button-right" ng-repeat="account in transaction.accounts" ng-if="account.amount === null">
+  <h2>{{account.name}}</h2><button class="button button-balanced"><i class="icon ion-edit"></i></button>
+  </div>
+</div>
+</ion-content>
+</ion-view>

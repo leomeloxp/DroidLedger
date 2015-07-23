@@ -1,0 +1,9 @@
+<ion-view view-title="Balance">
+  <ion-content>
+      <div class="list card">
+          <div class="item" ng-repeat="account in accounts">
+              <h2>{{account.name}} <span class="item-note"><span>{{account.currency}}</span>{{account.amount}}</span></h2>
+          </div>
+      </div>
+    </ion-content>
+</ion-view>
